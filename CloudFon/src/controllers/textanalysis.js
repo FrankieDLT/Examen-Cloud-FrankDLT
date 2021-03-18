@@ -26,12 +26,13 @@ class ibmCloudF {
             contentType: 'application/json',
         };
 
+         
         toneAnalyzer.tone(toneParams)
-            .then(toneAnalysis => {
-                console.log(JSON.stringify(toneAnalysis, null, 2));
-                fintext = JSON.stringify(toneAnalysis, null, 2);
-                fintext = JSON.parse(fintext);
-                console.log("Emoción principal: " + fintext.result.document_tone.tones[0].tone_name);
+            .then( async toneAnalysis => {
+                //console.log(JSON.stringify(toneAnalysis, null, 2));
+                fintext =  await JSON.stringify(toneAnalysis, null, 2);
+                fintext = await JSON.parse(fintext);
+                //console.log("Emoción principal: " + fintext.result.document_tone.tones[0].tone_name);
                 fintext = "Emoción principal: " + fintext.result.document_tone.tones[0].tone_name;
             })
             .catch(err => {
