@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Examen Cloud de Francisco De La Torre</title>
 </head>
-<script src="/src/controllers/htmlcreate.js"></script>
+<script src="htmlcreate.js"></script>
 <style>
     body {
         background-color: darkmagenta;
@@ -27,10 +27,10 @@
         margin-left: 35%;
         align-self: center;
     }
-    textarea{
+    input[type=text]{
         width: 60%;
     }
-    button{
+    input[type=submit]{
         margin-left: 25%;
         color: black;
         border-radius: 10px;
@@ -43,13 +43,15 @@
 </style>
 
 <body>
+    <form action="localhost:1130/sendtext" method="POST">
     <div id="main">
         <h1>Examen Cloud de FrankieDLT</h1>
-        <textarea placeholder="Escriba aquí una frase o parrafo"></textarea>
+        <input type="text" name="text"  placeholder="Escriba aquí una frase o parrafo"></input>
         <br>
-        <button onclick="Enviar()">Enviar!</button>
+        <input type="submit" value="Enviar">
     </div>
     <div id="result"></div>
+</form>
 </body>
 
 </html>
