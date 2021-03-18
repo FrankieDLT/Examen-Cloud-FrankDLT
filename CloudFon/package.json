@@ -1,7 +1,7 @@
 {
-  "name": "examen",
+  "name": "cloud-foundry",
   "version": "1.0.0",
-  "description": "Examen-Cloud-FrankDLT",
+  "description": "Parte de IBM del examen de cloud",
   "main": "app.js",
   "scripts": {
     "test": "",

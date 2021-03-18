@@ -1,9 +1,10 @@
-class General {
+class IBMMain {
     Index(req, res){
         res.json(
             { 
                 version: "1.0",
                 paths: [
+                    "/sendtext",
                     "/autor"
                 ] 
             }
@@ -13,9 +14,9 @@ class General {
     Autor(req, res){
         res.json({
             alumno:"FADLTV",
-            servicio:"ECS en AWS"
+            servicio:"Cloud Foundry en IBM Cloud"
         });
     }
 }
 
-module.exports = new General();
+module.exports = new IBMMain();
