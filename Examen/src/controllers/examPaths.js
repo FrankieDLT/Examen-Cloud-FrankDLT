@@ -1,13 +1,6 @@
 class General {
     Index(req, res){
-        res.json(
-            { 
-                version: "1.0",
-                paths: [
-                    "/autor"
-                ] 
-            }
-            ); 
+        res.sendFile('index.html', {root: __dirname }); 
     }
 
     Autor(req, res){

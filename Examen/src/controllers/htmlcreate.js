@@ -1,7 +1,9 @@
-var result;
+/*let container = document.getElementById('result');
+let textresu = document.getElementsByTagName('textarea').innerText;
 
-class HtmlC {
-    
-}
-
-module.exports = new HtmlC();
+ function Enviar() {
+    container.innerText = textresu;
+     
+ }
+*/
+ console.log("sdaasdasd");

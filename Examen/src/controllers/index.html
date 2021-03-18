@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Cloud de Francisco De La Torre</title>
+</head>
+<script src="/src/controllers/htmlcreate.js"></script>
+<style>
+    body {
+        background-color: darkmagenta;
+    }
+
+    h1 {
+        color: darkturquoise;
+    }
+    div{
+        margin: 15%;
+        margin-bottom: 0%;
+        margin-left: 35%;
+        align-self: center;
+    }
+    div[id=result]{
+        margin: 5%;
+        margin-left: 35%;
+        align-self: center;
+    }
+    textarea{
+        width: 60%;
+    }
+    button{
+        margin-left: 25%;
+        color: black;
+        border-radius: 10px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width:10%;
+        background-image: linear-gradient(#0be0fc, #d04aeb);
+    }
+</style>
+
+<body>
+    <div id="main">
+        <h1>Examen Cloud de FrankieDLT</h1>
+        <textarea placeholder="Escriba aquí una frase o parrafo"></textarea>
+        <br>
+        <button onclick="Enviar()">Enviar!</button>
+    </div>
+    <div id="result"></div>
+</body>
+
+</html>
