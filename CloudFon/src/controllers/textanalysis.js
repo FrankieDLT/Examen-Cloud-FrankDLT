@@ -17,8 +17,9 @@ const toneAnalyzer = new ToneAnalyzerV3({
 });
 
 class ibmCloudF {
-    TextAn(req, res) {
-        
+    //L función entera será asincrona para poder esperar bien el resultado.
+    async TextAn(req, res) {
+
         const toneParams = {
             toneInput: {
                 'text': req.body.text
@@ -26,22 +27,37 @@ class ibmCloudF {
             contentType: 'application/json',
         };
 
-         
-        toneAnalyzer.tone(toneParams)
-            .then( async toneAnalysis => {
-                //console.log(JSON.stringify(toneAnalysis, null, 2));
-                fintext =  await JSON.stringify(toneAnalysis, null, 2);
-                fintext = await JSON.parse(fintext);
-                //console.log("Emoción principal: " + fintext.result.document_tone.tones[0].tone_name);
-                fintext = "Emoción principal: " + fintext.result.document_tone.tones[0].tone_name;
-            })
-            .catch(err => {
-                console.log('error:', err);
-                fintext = 'Tenemos un error: ' + err;
-            });
+        //Es necesario hacer una promesa para que funcione
+        const finalText = await new Promise((resolve, reject) => {
+
+            toneAnalyzer.tone(toneParams)
+                .then(async toneAnalysis => {
+                    //Analisis del texto
+                    fintext = await JSON.stringify(toneAnalysis, null, 2);
+                    //Convirtiendo el resultado en objeto
+                    fintext = await JSON.parse(fintext);
+                    /**Sacando del objeto los datos queridos
+                     * Estructura del objeto
+                     * Objeto
+                     * ->resultados
+                     *   ->colleción de emociones
+                     *     ->arreglo de todas las emociones entontradas, se usa solo la primera
+                     *       ->nombre de la empción
+                     */
+                    fintext = "Emoción principal: " + fintext.result.document_tone.tones[0].tone_name;
+                    resolve(fintext);
+                })
+                .catch(err => {
+                    console.log('error:', err);
+                    //Texto de error custom
+                    fintext = 'Tenemos un error: ' + err;
+                    reject(fintext);
+                });
+
+        });
 
 
-        res.send(fintext);
+        res.send(finalText);
     }
 
 
